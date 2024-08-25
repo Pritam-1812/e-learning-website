@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Front-end by Pritam Borate</title>
+
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700&display=swap');
+
+        :root{
+          --green:#27ae60;
+          --black:#2c2c54;
+        }
+        
+        *{
+          font-family: 'Nunito', sans-serif;
+          margin:0; padding:0;
+          box-sizing: border-box;
+          outline: none; border:none;
+          text-decoration: none;
+          text-transform: capitalize;
+          transition: all .2s linear;
+        }
+        
+        *::selection{
+          background:var(--green);
+          color:#fff;
+        }
+        
+        html{
+          font-size: 62.5%;
+          overflow-x: hidden;
+          scroll-padding-top: 6.5rem;
+          scroll-behavior: smooth;
+        }
+        
+        section{
+          padding:2rem 9%;
+        }
+        
+        .btn{
+          display: inline-block;
+          margin-top: 1rem;
+          background:var(--green);
+          color:#fff;
+          padding:.8rem 3rem;
+          font-size: 1.7rem;
+          text-align: center;
+          cursor: pointer;
+        }
+        
+        .btn:hover{
+          background:var(--black);
+        }
+        
+        .heading{
+          text-align: center;
+          color:var(--black);
+          text-transform: uppercase;
+          padding:1rem;
+          font-size: 3.5rem;
+          padding-bottom: 2rem;
+        }
+        
+        .heading span{
+          color:var(--green);
+          text-transform: uppercase;
+        }
+        
+        .header-1{
+          background:#eee;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding:2rem 9%;
+        }
+        
+        .logo{
+          color:var(--black);
+          font-weight: bolder;
+          font-size: 3rem;
+        }
+        
+        .logo i{
+          padding-right: .5rem;
+          color:var(--green);
+        }
+        
+        .header-1 .search-box-container{
+          display: flex;
+          height:5rem;
+        }
+        
+        .header-1 .search-box-container #search-box{
+          height: 100%;
+          width:100%;
+          padding:1rem;
+          font-size: 2rem;
+          color:#333;
+          border:.1rem solid rgba(0,0,0,.3);
+          text-transform: none;
+        }
+        
+        .header-1 .search-box-container label{
+          height: 100%;
+          width:8rem;
+          font-size: 2.5rem;
+          line-height: 5rem;
+          color:#fff;
+          background:var(--green);
+          text-align: center;
+          cursor: pointer;
+        }
+        
+        .header-1 .search-box-container label:hover{
+          background:var(--black);
+        }
+        
+        .header-2{
+          background:#fff;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding:2rem 9%;
+          box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+          position: relative;
+        }
+        
+        .header-2.active{
+          position: fixed;
+          top:0; left: 0; right:0;
+          z-index: 10000;
+        }
+        
+        .header-2 .navbar a{
+          padding:.5rem 1.5rem;
+          font-size: 2rem;
+          border-radius: .5rem;
+          color:var(--black);
+        }
+        
+        .header-2 .navbar a:hover{
+          background:var(--green);
+          color:#fff;
+        }
+        
+        .header-2 .icons a{
+          font-size: 2.5rem;
+          color:var(--black);
+          padding-left: 1rem;
+        }
+        
+        .header-2 .icons a:hover{
+          color:var(--green);
+        }
+        
+        #menu-bar{
+          font-size: 3rem;
+          border-radius: .5rem;
+          border:.1rem solid var(--black);
+          padding:.8rem 1.5rem;
+          color:var(--black);
+          cursor: pointer;
+          display: none;
+        }
+        
+        .home{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+        
+        .home .image{
+          flex:1 1 40rem;
+          padding-top: 5rem;
+        }
+        
+        .home .image img{
+          width:100%;
+        }
+        
+        .home .content{
+          flex:1 1 40rem;
+        }
+        
+        .home .content span{
+          font-size: 3rem;
+          color:#666;
+        }
+        
+        .home .content h3{
+          font-size: 5rem;
+          color:var(--black);
+        }
+        
+        .banner-container{
+          display: flex;
+          flex-wrap: wrap;
+          gap:1.5rem;
+        }
+        
+        .banner-container .banner{
+          flex:1 1 40rem;
+          height: 25rem;
+          overflow: hidden;
+          position: relative;
+        }
+        
+        .banner-container .banner img{
+          height: 100%;
+          width:100%;
+          object-fit: cover;
+        }
+        
+        .banner-container .banner .content{
+          position: absolute;
+          top:50%; left: 4%;
+          transform: translateY(-50%);
+        }
+        
+        .banner-container .banner .content h3{
+          font-size: 3rem;
+          color:var(--black);
+        }
+        
+        .banner-container .banner .content p{
+          font-size: 2rem;
+          color:#333;
+        }
+        
+        .banner-container .banner:hover img{
+          transform:scale(1.2) rotate(-5deg);
+        }
+        
+        .category .box-container{
+          display: flex;
+          gap: 1.5rem;
+          flex-wrap: wrap;
+          padding-top: 1rem;
+        }
+        
+        .category .box-container .box{
+          border:.1rem solid rgba(0,0,0,.3);
+          border-radius: .5rem;
+          text-align: center;
+          padding:2rem;
+          flex:1 1 25rem;
+        }
+        
+        .category .box-container .box img{
+          width: 20rem;
+          margin:.5rem 0;
+        }
+        
+        .category .box-container .box h3{
+          font-size: 3.5rem;
+          color:var(--black);
+        }
+        
+        .category .box-container .box p{
+          font-size: 2rem;
+          color:#666;
+          padding:.5rem 0;
+        }
+        
+        .category .box-container .box .btn{
+          display: block;
+        }
+        
+        .product .box-container{
+          display: flex;
+          flex-wrap: wrap;
+          gap:1.5rem;
+        }
+        
+        .product .box-container .box{
+          flex:1 1 30rem;
+          text-align: center;
+          padding:2rem;
+          border:.1rem solid rgba(0,0,0,.3);
+          border-radius: .5rem;
+          overflow: hidden;
+          position: relative;
+        }
+        
+        .product .box-container .box img{
+          height: 20rem;
+        }
+        
+        .product .box-container .box .discount{
+          position: absolute;
+          top:1rem; left: 1rem;
+          background:rgba(0,255,0,.1);
+          color:var(--green);
+          padding:.7rem 1rem;
+          font-size: 2rem;
+        }
+        
+        .product .box-container .box .icons{
+          position: absolute;
+          top:.5rem; right:-6rem;
+        }
+        
+        .product .box-container .box:hover .icons{
+          right:1rem;
+        }
+        
+        .product .box-container .box .icons a{
+          display: block;
+          height:4.5rem;
+          width:4.5rem;
+          line-height: 4.5rem;
+          font-size: 1.7rem;
+          color:var(--black);
+          background:rgba(0,0,0,.05);
+          border-radius: 50%;
+          margin-top: .7rem;
+        }
+        
+        .product .box-container .box .icons a:hover{
+          background:var(--green);
+          color:#fff;
+        }
+        
+        .product .box-container .box h3{
+          color:var(--black);
+          font-size: 2.5rem;
+        }
+        
+        .product .box-container .box .stars i{
+          padding:1rem .1rem;
+          font-size: 1.7rem;
+          color:gold;
+        }
+        
+        .product .box-container .box .price{
+          font-size: 2rem;
+          color:#333;
+          padding:.5rem 0;
+        }
+        
+        .product .box-container .box .price span{
+          font-size: 1.5rem;
+          color:#999;
+          text-decoration: line-through;
+        }
+        
+        .product .box-container .box .quantity{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding-top: 1rem;
+          padding-bottom: .5rem;
+        }
+        
+        .product .box-container .box .quantity span{
+          padding:0 .7rem;
+          font-size: 1.7rem;
+        }
+        
+        .product .box-container .box .quantity input{
+          border:.1rem solid rgba(0,0,0,.3);
+          font-size: 1.5rem;
+          font-weight: bolder;
+          color:var(--black);
+          padding:.5rem;
+          background:rgba(0,0,0,.05);
+        }
+        
+        .product .box-container .box .btn{
+          display: block;
+        }
+        
+        .deal{
+          background:url(../images/deal-bg.jpg) no-repeat;
+          background-position: center;
+          background-size: cover;
+          padding-top: 7rem;
+          padding-bottom: 7rem;
+        }
+        
+        .deal .content{
+          max-width: 50rem;
+        }
+        
+        .deal .content .title{
+          font-size: 4rem;
+          color:var(--black);
+        }
+        
+        .deal .content p{
+          font-size: 1.7rem;
+          padding:1rem 0;
+          color:#333;
+        }
+        
+        .deal .content .count-down{
+          display: flex;
+          gap:1rem;
+          padding:.5rem 0;
+        }
+        
+        .deal .content .count-down .box{
+          width:9rem;
+          text-align: center;
+          box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+          border:.1rem solid rgba(0,0,0,.3);
+        }
+        
+        .deal .content .count-down .box h3{
+          color:var(--black);
+          background:#fff;
+          height: 7rem;
+          line-height: 7rem;
+          width:100%;
+          font-size: 5rem;
+        }
+        
+        .deal .content .count-down .box span{
+          display: block;
+          background:var(--black);
+          color:#fff;
+          width:100%;
+          padding:.5rem;
+          font-size: 2rem;
+        }
+        
+        .contact form{
+          text-align: center;
+          padding:2rem;
+          border:.1rem solid rgba(0,0,0,.3);
+        }
+        
+        .contact form .inputBox{
+          display: flex;
+          justify-content: space-between;
+          flex-wrap: wrap;
+        }
+        
+        .contact form .inputBox input, .contact form textarea{
+          padding:1rem;
+          font-size: 1.7rem;
+          background:#f7f7f7;
+          text-transform: none;
+          margin:1rem 0;
+          border:.1rem solid rgba(0,0,0,.3);
+          width: 49%;
+        }
+        
+        .contact form textarea{
+          height: 20rem;
+          resize: none;
+          width: 100%;
+        }
+        
+        .newsletter{
+          background:url(../images/newsletter-bg.jpg) no-repeat;
+          background-size: cover;
+          background-position: center;
+          text-align: center;
+          padding:5rem 2rem;
+        }
+        
+        .newsletter h3{
+          font-size: 3rem;
+          color:var(--black);
+        }
+        
+        .newsletter form{
+          max-width: 55rem;
+          display: flex;
+          align-items: center;
+          margin:1rem auto;
+          padding:1.5rem;
+          background:rgba(0,0,0,.1);
+        }
+        
+        .newsletter form .box{
+          width:100%;
+          padding:.7rem 1.5rem;
+          font-size: 1.7rem;
+          color:#333;
+          text-transform: none;
+        }
+        
+        .newsletter form .btn{
+          margin-top: 0;
+        }
+        
+        .footer .box-container{
+          display: flex;
+          gap:1.5rem;
+          flex-wrap: wrap;
+        }
+        
+        .footer .box-container .box{
+          padding:1rem 0;
+          flex:1 1 25rem;
+        }
+        
+        .footer .box-container .box .share a{
+          padding:0;
+          height:4rem;
+          width:4rem;
+          line-height: 4rem;
+          text-align: center;
+        }
+        
+        .footer .box-container .box h3{
+          font-size: 2.5rem;
+          color:var(--black);
+        }
+        
+        .footer .box-container .box p{
+          font-size: 1.3rem;
+          color:#666;
+          padding:.7rem 0;
+        }
+        
+        .footer .box-container .box .links{
+          padding:1rem 0;
+        }
+        
+        .footer .box-container .box .links a{
+          display: block;
+          padding:.5rem 0;
+          font-size: 1.7rem;
+          color:#333;
+        }
+        
+        .footer .box-container .box .links a:hover{
+          text-decoration: underline;
+          color:var(--green);
+        }
+        
+        .footer .credit{
+          padding:2.5rem 1rem;
+          border-top: .1rem solid rgba(0,0,0,.1);
+          margin-top: 1rem;
+          text-align: center;
+          font-size: 2rem;
+        }
+        
+        .footer .credit span{
+          color:var(--green);
+        }
+        
+        /* media queries  */
+        
+        @media(max-width:1200px){
+        
+          html{
+            font-size: 55%;
+          }
+        
+        }
+        
+        @media(max-width:991px){
+        
+          .header-1,
+          .header-2{
+            padding:2rem;
+          }
+        
+          section{
+            padding:2rem;
+          }
+        
+        }
+        
+        @media(max-width:768px){
+        
+          #menu-bar{
+            display: initial;
+          }
+        
+          .header-2 .navbar{
+            position: absolute;
+            top:100%; left: 0; right:0;
+            background:var(--black);
+            padding:1rem 2rem;
+            display: none;
+          }
+        
+          .header-2 .navbar.active{
+            display: initial;
+          }
+        
+          .header-2 .navbar a{
+            font-size: 2.5rem;
+            display: block;
+            text-align: center;
+            background:#fff;
+            padding:1rem;
+            margin:1.5rem 0;
+          }
+        
+          .home .content{
+            text-align: center;
+          }
+        
+          .home .content h3{
+            font-size: 4rem;
+          }
+        
+          .deal{
+            background-position: left;
+          }
+        
+          .deal .content{
+            max-width: 100%;
+            text-align: center;
+          }
+        
+          .deal .content .count-down{
+            justify-content: center;
+          }
+        
+          .contact form .inputBox input{
+            width:100%;
+          }
+        
+          .newsletter h3{
+            font-size: 2.2rem;
+          }
+        
+        }
+        
+        @media(max-width:450px){
+        
+          html{
+            font-size: 50%;
+          }
+        
+          .heading{
+            font-size: 3rem;
+          }
+        
+          .header-1{
+            flex-flow: column;
+          }
+        
+          .header-1 .search-box-container{
+            width:100%;
+            margin-top: 2rem;
+          }
+        
+          .logo{
+            font-size: 4rem;
+          }
+        
+          .deal .content .count-down .box h3{
+            font-size: 4rem;
+          }
+        
+          .deal .content .count-down .box span{
+            font-size: 1.5rem;
+          }
+        
+        }</style>
+
+</head>
+<body>
+
+<!-- header section starts  -->
+
+<header>
+
+  <div class="header-1">
+
+      <a href="#" class="logo"><i class="fas fa-book"></i>Home Page </a>
+
+      <form action="" class="search-box-container">
+          <input type="search" id="search-box" placeholder="search here...">
+          <label for="search-box" class="fas fa-search"></label>
+      </form>
+
+  </div>
+
+  <div class="header-2">
+
+      <div id="menu-bar" class="fas fa-bars"></div>
+
+      <nav class="navbar">
+          <a href="#home">Home</a>
+          <a href="#category">Category</a>
+          <a href="#product">Latest Course</a>
+          <a href="#deal">Offers/Subscriptions</a>
+          <a href="#contact">Support</a>
+      </nav>
+
+      <div class="icons">
+          <a href="#" class="fas fa-shopping-cart"></a>
+          <a href="#" class="fas fa-heart"></a>
+          <a href="#" class="fas fa-user-circle"></a>
+      </div>
+
+  </div>
+
+</header>
+
+<!-- header section ends -->
+
+<!-- home section starts  -->
+
+<section class="home" id="home">
+
+    <div class="image">
+        <img src="https://img.freepik.com/free-vector/digital-online-education-concept-blank-space-laptop_255625-422.jpg?size=626&ext=jpg"alt="">
+    </div>
+
+    <div class="content">
+        <span>  Start your Journey</span>
+        <h3>  Learn or Teach</h3>
+        <a href="#" class="btn"> get started</a>
+    </div>
+
+</section>
+
+<!-- home section ends -->
+
+<!-- category section starts  -->
+
+<section class="category" id="category">
+
+    <h1 class="heading"> Learn by <span>category</span></h1>
+
+    <div class="box-container">
+    
+        <div class="box">
+            <h3>Stock Market</h3>
+            <p>Common stock
+              Preferred stock
+              Large-cap stocks
+              Mid-cap stocks
+              Small-cap stocks
+              Domestic stock
+              International stocks
+              Growth stocks</p>
+            
+            <a href="#" class="btn">Start Now</a>
+        </div>
+        <div class="box">
+            <h3>Enginnering</h3>
+            <p>Aerospace/aeronautical engineering
+              Chemical engineering
+              Civil engineering
+              Electrical/electronic engineering
+              Mechanical engineering</p>
+            <img src="images/category-2.png" alt="">
+            <a href="#" class="btn">Start Now</a>
+        </div>
+        <div class="box">
+            <h3>Humanities</h3>
+            <p>law, languages, philosophy, religion and mythology, international relations,geography, popular culture, and art and music</p>
+            <img src="images/category-3.png" alt="">
+            <a href="#" class="btn">Start Now</a>
+        </div>
+        <div class="box">
+          
+            <h3>Programming</h3>
+            <p>Java <br>
+              C & C++ <br>
+              PHP <br>
+              Swift <br>
+              C# (C- Sharp) <br>
+              Ruby <br>
+              Python <br>
+              </p>
+
+            <a href="#" class="btn">Start Now</a>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- category section ends -->
+
+<!-- product section starts  -->
+
+<section class="product" id="product">
+
+    <h1 class="heading">latest <span>Courses</span></h1>
+
+    <div class="box-container">
+
+        <div class="box">
+            <span class="discount">-33%</span>
+            <div class="icons">
+                <a href="#" class="fas fa-heart"></a>
+                <a href="#" class="fas fa-share"></a>
+                <a href="#" class="fas fa-eye"></a>
+            </div>
+            <img src="images/product-1.png" alt="">
+            <h3>C++</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                
+            </div>
+            <div class="price"> $10.50 <span> $13.20 </span> </div>
+            <div class="quantity">
+                <span>Time: 6 Months </span>
+                <span> Basic to Expert </span>
+            </div>
+            <a href="#" class="btn">Check Details</a>
+        </div>
+
+        <div class="box">
+            <span class="discount">-45%</span>
+            <div class="icons">
+                <a href="#" class="fas fa-heart"></a>
+                <a href="#" class="fas fa-share"></a>
+                <a href="#" class="fas fa-eye"></a>
+            </div>
+            <img src="images/product-2.png" alt="">
+            <h3>Python</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <div class="price"> $10.50 <span> $13.20 </span> </div>
+            <div class="quantity">
+              <span>Time: 6 Months </span>
+              <span> Basic to Expert </span>
+            </div>
+            <a href="#" class="btn">add to cart</a>
+        </div>
+
+        <div class="box">
+            <span class="discount">-52%</span>
+            <div class="icons">
+                <a href="#" class="fas fa-heart"></a>
+                <a href="#" class="fas fa-share"></a>
+                <a href="#" class="fas fa-eye"></a>
+            </div>
+            <img src="images/product-3.png" alt="">
+            <h3>BlockChain Development</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <div class="price"> $10.50 <span> $13.20 </span> </div>
+            <div class="quantity">
+              <span>Time: 6 Months </span>
+              <span> Basic to Expert </span>
+            </div>
+            <a href="#" class="btn">add to cart</a>
+        </div>
+
+        <div class="box">
+            <span class="discount">-13%</span>
+            <div class="icons">
+                <a href="#" class="fas fa-heart"></a>
+                <a href="#" class="fas fa-share"></a>
+                <a href="#" class="fas fa-eye"></a>
+            </div>
+            <img src="images/product-4.png" alt="">
+            <h3>Web Development</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <div class="price"> $10.50 <span> $13.20 </span> </div>
+            <div class="quantity">
+              <span>Time: 6 Months </span>
+              <span> Basic to Expert </span>
+            </div>
+            <a href="#" class="btn">add to cart</a>
+        </div>
+
+        <div class="box">
+            <span class="discount">-20%</span>
+            <div class="icons">
+                <a href="#" class="fas fa-heart"></a>
+                <a href="#" class="fas fa-share"></a>
+                <a href="#" class="fas fa-eye"></a>
+            </div>
+            <img src="images/product-5.png" alt="">
+            <h3>Graphic Desgining</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <div class="price"> $10.50 <span> $13.20 </span> </div>
+            <div class="quantity">
+              <span>Time: 6 Months </span>
+              <span> Basic to Expert </span>
+            </div>
+            <a href="#" class="btn">add to cart</a>
+        </div>
+
+        <div class="box">
+            <span class="discount">-29%</span>
+            <div class="icons">
+                <a href="#" class="fas fa-heart"></a>
+                <a href="#" class="fas fa-share"></a>
+                <a href="#" class="fas fa-eye"></a>
+            </div>
+            <img src="images/product-6.png" alt="">
+            <h3>Electrical Enginnering</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <div class="price"> $10.50 <span> $13.20 </span> </div>
+            <div class="quantity">
+              <span>Time: 6 Months </span>
+              <span> Basic to Intermidate </span>
+            </div>
+            <a href="#" class="btn">add to cart</a>
+        </div>
+
+        <div class="box">
+            <span class="discount">-55%</span>
+            <div class="icons">
+                <a href="#" class="fas fa-heart"></a>
+                <a href="#" class="fas fa-share"></a>
+                <a href="#" class="fas fa-eye"></a>
+            </div>
+            <img src="images/product-7.png" alt="">
+            <h3>Swift</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <div class="price"> $10.50 <span> $13.20 </span> </div>
+            <div class="quantity">
+              <span>Time: 6 Months </span>
+              <span> Basic to Expert </span>
+            </div>
+            <a href="#" class="btn">add to cart</a>
+        </div>
+
+        <div class="box">
+            <span class="discount">-30%</span>
+            <div class="icons">
+                <a href="#" class="fas fa-heart"></a>
+                <a href="#" class="fas fa-share"></a>
+                <a href="#" class="fas fa-eye"></a>
+            </div>
+            <img src="images/product-8.png" alt="">
+            <h3>Day Trading</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <div class="price"> $10.50 <span> $13.20 </span> </div>
+            <div class="quantity">
+              <span>Time: 6 Months </span>
+              <span> Basic to Expert </span>
+            </div>
+            <a href="#" class="btn">add to cart</a>
+        </div>
+
+        <div class="box">
+            <span class="discount">-40%</span>
+            <div class="icons">
+                <a href="#" class="fas fa-heart"></a>
+                <a href="#" class="fas fa-share"></a>
+                <a href="#" class="fas fa-eye"></a>
+            </div>
+            <img src="images/product-9.png" alt="">
+            <h3>Indian History</h3>
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+            </div>
+            <div class="price"> $10.50 <span> $13.20 </span> </div>
+            <div class="quantity">
+              <span>Time: 6 Months </span>
+              <span> Basic to Expert </span>
+            </div>
+            <a href="#" class="btn">add to cart</a>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- product section ends -->
+
+<!-- deal section starts  -->
+
+<section class="deal" id="deal">
+
+    <div class="content">
+
+        <h3 class="title">deal of the day</h3>
+        <p>Just buy , add and love your life</p> 
+        <div class="count-down">
+            <div class="box">
+                <h3 id="day">00</h3>
+                <span>day</span>
+            </div>
+            <div class="box">
+                <h3 id="hour">00</h3>
+                <span>hour</span>
+            </div>
+            <div class="box">
+                <h3 id="minute">00</h3>
+                <span>minute</span>
+            </div>
+            <div class="box">
+                <h3 id="second">00</h3>
+                <span>second</span>
+            </div>
+        </div>
+        
+</section>
+        <section class="banner-container">
+
+          <div class="banner">
+              <img src="https://png.pngtree.com/thumb_back/fh260/back_our/20190628/ourmid/pngtree-colorful-superimposed-spring-new-promotion-background-material-image_279078.jpg" alt="">
+              <div class="content">
+                  <h3>special offer - 1 Year Premium</h3>
+                  <p>upto 45% off</p>
+                  <a href="#" class="btn">check out</a>
+              </div>
+          </div>
+        
+          <div class="banner">
+              <img src="https://png.pngtree.com/thumb_back/fh260/back_our/20190621/ourmid/pngtree-tmall-double-12-super-deal-poster-png_180286.jpg" alt="">
+              <div class="content">
+                  <h3>limited offer - 1 Month Premium</h3>
+                  <p>upto 50% off</p>
+                  <a href="#" class="btn">check out</a>
+              </div>
+          </div>
+        
+        </section>
+
+
+
+    </div>
+
+
+<!-- deal section ends -->
+
+<!-- contact section starts  -->
+
+<section class="contact" id="contact">
+
+    <h1 class="heading"> <span>Support</span> / Contact US </h1>
+
+    <form action="">
+
+        <div class="inputBox">
+            <input type="text" placeholder="name">
+            <input type="email" placeholder="email">
+        </div>
+
+        <div class="inputBox">
+            <input type="number" placeholder="number">
+            <input type="text" placeholder="subject">
+        </div>
+
+        <textarea placeholder="message" name="" id="" cols="30" rows="10"></textarea>
+
+        <input type="submit" value="send message" class="btn">
+
+    </form>
+
+</section>
+
+<!-- contact section ends -->
+
+<!-- newsletter section starts  -->
+
+<section class="newsletter">
+
+    <h3>subscribe us for latest updates</h3>
+
+    <form action="">
+        <input class="box" type="email" placeholder="enter your email">
+        <input type="submit" value="subscribe" class="btn">
+    </form>
+
+</section>
+
+<!-- newsletter section ends -->
+
+<!-- footer section starts  -->
+
+<section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <a href="#" class="logo"><i class="fas fa-book"></i>Mindgo Tech Pvt Ltd</a>
+            <p>Learn or Teach , Start your Journey </p>
+            <div class="share">
+                <a href="#" class="btn fab fa-facebook-f"></a>
+                <a href="#" class="btn fab fa-twitter"></a>
+                <a href="#" class="btn fab fa-instagram"></a>
+                <a href="#" class="btn fab fa-linkedin"></a>
+            </div>
+        </div>
+        
+        <div class="box">
+            <h3>our location</h3>
+            <div class="links">
+                <a href="#">india</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <h3>quick links</h3>
+            <div class="links">
+                <a href="#">home</a>
+                <a href="#">category</a>
+                <a href="#">product</a>
+                <a href="#">deal</a>
+                <a href="#">contact</a>
+            </div>
+        </div>
+
+        <div class="box">
+            <h3>download app</h3>
+            <div class="links">
+                <a href="#">google play</a>
+                <a href="#">window xp</a>
+                <a href="#">app store</a>
+            </div>
+        </div>
+
+    </div>
+
+    <h1 class="credit"> created by <span> Pritam Borate </span> | all rights reserved! </h1>
+
+</section>
+
+<!-- footer section ends -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- custom js file link  -->
+<script>
+
+let menu = document.querySelector('#menu-bar');
+let navbar = document.querySelector('.navbar');
+let header = document.querySelector('.header-2');
+
+menu.addEventListener('click', () =>{
+    menu.classList.toggle('fa-times');
+    navbar.classList.toggle('active');
+});
+
+window.onscroll = () =>{
+    menu.classList.remove('fa-times');
+    navbar.classList.remove('active');
+
+    if(window.scrollY > 150){
+        header.classList.add('active');
+    }else{
+        header.classList.remove('active');
+    }
+
+}
+
+let countDate = new Date('june 1, 2021 00:00:00').getTime();
+
+function CountDown(){
+
+    let now = new Date().getTime();
+    gap = countDate - now;
+
+    let second = 1000;
+    let minute = second * 60;
+    let hour = minute * 60;
+    let day = hour * 24;
+
+    let d = Math.floor(gap / (day));
+    let h = Math.floor((gap % (day)) / (hour));
+    let m = Math.floor((gap % (hour)) / (minute));
+    let s = Math.floor((gap % (minute)) / (second));
+
+    document.getElementById('day').innerText = d;
+    document.getElementById('hour').innerText = h;
+    document.getElementById('minute').innerText = m;
+    document.getElementById('second').innerText = s;
+
+}
+
+setInterval(function(){
+    CountDown();
+},1000)
+</script>
+    
+</body>
+</html>
